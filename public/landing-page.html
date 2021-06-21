@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Perpustakaan</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+
+    <style>
+        @import url("https://rsms.me/inter/inter.css");
+
+        html {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+                "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+                "Noto Color Emoji";
+        }
+
+        .gradient {
+            background-image: linear-gradient(-225deg, #6a38f2 0%, #24d7dd 100%);
+        }
+
+        button,
+        .gradient2 {
+            background-color: #86e3f3;
+            background-image: linear-gradient(315deg, #69ffd2 0%, #4bdeff 74%);
+            /* color: white; */
+        }
+
+        .browser-mockup {
+            border-top: 2em solid rgba(230, 230, 230, 0.7);
+            position: relative;
+            height: 60vh;
+        }
+
+        .browser-mockup:before {
+            display: block;
+            position: absolute;
+            content: "";
+            top: -1.25em;
+            left: 1em;
+            width: 0.5em;
+            height: 0.5em;
+            border-radius: 50%;
+            background-color: rgb(68, 134, 255);
+            box-shadow: 0 0 0 2px rgb(68, 174, 255), 1.5em 0 0 2px rgb(51, 71, 187), 3em 0 0 2px rgb(93, 85, 255);
+        }
+
+        .browser-mockup>* {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body class="gradient leading-relaxed tracking-wide flex flex-col">
+
+    <!--Navigation-->
+    <nav id="header" class="w-full z-30 top-0 text-white py-1">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-4">
+            <div class="pl-4 flex items-center">
+                <a class="no-underline hover:no-underline font-bold text-2xl lg:text-2xl flex items-center bg" href="#">
+                    <img src="logo.png" alt="" width="50" style="margin-top: -10px;">
+                    Books
+                </a>
+            </div>
+
+            <!-- responsive hamburger -->
+            <div class="block lg:hidden pr-4">
+                <button id="nav-toggle"
+                    class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-green-500 appearance-none focus:outline-none">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    </svg>
+                </button>
+            </div>
+
+
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0 z-20"
+                id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <!-- <li class="mr-3">
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#">Ebook</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#">Koleksi</a>
+                    </li> -->
+                </ul>
+                <button id="navAction"
+                    class="mx-auto lg:mx-1 hover:underline text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 shadow opacity-80">
+                    Login
+                </button>
+                <button id="navAction"
+                    class="mx-auto lg:mx-1 hover:underline text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 shadow opacity-80">
+                    Register
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <div class="container mx-auto h-48 lg:h-96">
+        <div class="text-center px-3 lg:px-0 mt-20">
+            <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight text-gray-300">
+                Perpustakaan
+            </h1>
+        </div>
+    </div>
+
+    <!-- search bar -->
+    <div class="flex justify-center">
+        <input type="text" placeholder="Cari buku"
+            class="py-2 px-2 w-4/5 lg:w-1/2 border border-gray-200 rounded shadow-2xl h-16 z-20 outline-none font-bold"
+            style="margin-bottom: -25px;">
+    </div>
+
+    <!-- fast search -->
+    <section class="bg-white border-b py-12 ">
+        <div class="container mx-auto flex flex-wrap items-center justify-between pb-12">
+            <h2 class="w-full my-2 text-xl font-black leading-tight text-center text-gray-800 lg:mt-8">
+                Select the topic you are interested in
+            </h2>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+
+            <div class="flex flex-1 flex-wrap max-w-4xl mx-auto items-center justify-around mt-10">
+                <div
+                    class="flex flex-col items-center justify-center h-24 lg:h-40 w-24 lg:w-40 border-gray-300 bg-gray-100 rounded hover:shadow-xl cursor-pointer my-2 p-4 mx-1">
+                    <img src="img/literature.png" alt="literature" width="100">
+                    <p class="text-gray-900 font-light text-xs">literature</p>
+                </div>
+                <div
+                    class="flex items-center flex-col justify-center h-24 lg:h-40 w-24 lg:w-40 border-gray-300 bg-gray-100 rounded hover:shadow-xl cursor-pointer my-2 p-4 mx-1">
+                    <img src="img/language.png" alt="literature" width="100">
+                    <p class="text-gray-900 font-light text-xs">language</p>
+                </div>
+                <div
+                    class="flex items-center flex-col justify-center h-24 lg:h-40 w-24 lg:w-40 border-gray-300 bg-gray-100 rounded hover:shadow-xl cursor-pointer my-2 p-4 mx-1">
+                    <img src="img/computer.png" alt="literature" width="100">
+                    <p class="text-gray-900 font-light text-xs">computer science</p>
+                </div>
+                <div
+                    class="flex items-center flex-col justify-center h-24 lg:h-40 w-24 lg:w-40 border-gray-300 bg-gray-100 rounded hover:shadow-xl cursor-pointer my-2 p-4 mx-1">
+                    <img src="img/art.png" alt="literature" width="100">
+                    <p class="text-gray-900 font-light text-xs">art</p>
+                </div>
+                <div
+                    class="flex items-center flex-col justify-center h-24 lg:h-40 w-24 lg:w-40 border-gray-300 bg-gray-100 rounded hover:shadow-xl cursor-pointer my-2 p-4 mx-1">
+                    <img src="img/social-science.png" alt="literature" width="100">
+                    <p class="text-gray-900 font-light text-xs">social</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- books -->
+    <section class="bg-white border-b py-8">
+        <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+            <h2 class="w-full my-2 text-xl font-black leading-tight text-center text-gray-800">
+                New collections + updated
+            </h2>
+            <p class="text-gray-500 font-light mb-10 text-center mx-auto w-9/12">These are new collections list. Hope
+                you like
+                them. Maybe
+                not all
+                of them
+                are
+                new.
+                But in term of time, we make sure that these are fresh from our processing oven</p>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+
+            <div class="flex flex-wrap justify-center lg:justify-between w-full p-6 bg-gray-100">
+
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb1.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb6.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb2.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb3.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb4.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+                <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                    <a href="#">
+                        <div class="pt-3">
+                            <img src="img/thumb5.png" alt="" class="mx-auto" width="150">
+                        </div>
+                        <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
+                            Ciki dan tiki unggas sahabat manusia
+                        </p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- call to action -->
+    <section class="gradient w-full mx-auto text-center pt-6 pb-12">
+        <h2 class="w-full my-2 text-4xl font-black leading-tight text-center text-white">
+            Mau Pinjam Buku?
+        </h2>
+        <div class="w-full mb-10">
+            <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <a href="{{url('/register')}}"
+            class="gradient mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg">
+            Daftar!
+        </a>
+    </section>
+
+    <!--Footer-->
+    <footer class="bg-white ">
+        <div class="container mx-auto mt-8 px-8">
+            <div class="w-full flex flex-col md:flex-row py-6">
+                <div class="flex-1 mb-6">
+                    <a class="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                        <img src="logo.png" width="100" alt="">
+                        Books
+                    </a>
+                </div>
+
+                <div class="flex-1">
+                    <p class="uppercase font-extrabold text-gray-500 md:mb-6">Legal</p>
+                    <ul class="list-reset mb-6">
+                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                            <a href="#"
+                                class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500">Terms</a>
+                        </li>
+                        <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                            <a href="#"
+                                class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center text-gray-500 my-10">&copy;copyright website perpustakaan books 2021</p>
+        </div>
+    </footer>
+
+    <script>
+        /*Toggle dropdown list*/
+        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+        var navMenuDiv = document.getElementById("nav-content");
+        var navMenu = document.getElementById("nav-toggle");
+
+        document.onclick = check;
+
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                // click NOT on the menu
+                if (checkParent(target, navMenu)) {
+                    // click on the link
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else {
+                        navMenuDiv.classList.add("hidden");
+                    }
+                } else {
+                    // click both outside link and outside menu, hide menu
+                    navMenuDiv.classList.add("hidden");
+                }
+            }
+        }
+
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) {
+                    return true;
+                }
+                t = t.parentNode;
+            }
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>
